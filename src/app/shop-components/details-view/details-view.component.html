@@ -1,0 +1,42 @@
+<div class="main-wrapper">
+  <div class="container">
+    <div class="main-title">
+      <app-category (catid)="catid($event)"></app-category>
+    </div>
+
+
+    <div class="item-list details-active">
+      <div class="item"
+        *ngFor="let slide of productlist | filterbycat:id |  paginate: { itemsPerPage: 12, currentPage: p} ">
+        <div class="item-img">
+          <img [src]=[slide.productImage]>
+          <div class="icon-list">
+            <button type="button" [routerLink]="['/detailsproduct',this.slide._id]">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+            <button type="button" (click)="addtocart(this.slide._id)">
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button type="button" (click)="addtowishlist(this.slide._id)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+        <div class="item-detail">
+          <a class="item-name">{{slide.title}}</a>
+          <div class="item-price">
+            <span class="new-price">₹&nbsp;{{slide.price}}</span>
+            <span class="old-price">₹&nbsp;275.60</span>
+          </div>
+          <p>{{slide.description}}</p>
+          <button type="button" class="add-btn" (click)="addtocart(this.slide._id)">add to cart</button>
+        </div>
+      </div>
+
+
+    </div>
+    <pagination-controls class="my-pagination" (pageChange)="p = $event" (pageBoundsCorrection)="p = $event"
+      previousLabel="Previous" nextLabel="Next">
+    </pagination-controls>
+  </div>
+</div>

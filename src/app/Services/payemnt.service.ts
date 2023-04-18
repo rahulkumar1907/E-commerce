@@ -1,0 +1,20 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LoginService } from './login.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PayemntService {
+  userId = this.authservice.getuserId()
+  URL='http://localhost:3000'
+  constructor(private http: HttpClient, private authservice: LoginService) { }
+
+  makePayment(): Observable<any> {
+    
+    const url = `${this.URL}/bachatbazzar/payement/create-checkout-session/${this.userId}`
+
+    return this.http.post<any>(url, {})
+  }
+}

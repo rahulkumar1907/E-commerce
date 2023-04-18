@@ -1,0 +1,46 @@
+<div class="container-fluidx">
+  <div class="upper">
+    <p>Products Similar Like This</p>
+
+  </div>
+  <div class="crouselx">
+
+<img src="https://blogapi.s3.us-west-2.amazonaws.com/uploads/733ca894-ac5d-40c5-8d75-0160ec066de3-trending.jpg" alt="" class="srcss">
+<div class="wrap">
+
+  <div  *ngFor="let slide of productlist | paginate: { itemsPerPage: 4, currentPage: p }">
+
+        <div class="item">
+          <div class="img-box">
+            <img [src]=[slide.productImage] alt="Awesome Sunglasses">
+          </div>
+          <div class="details">
+            <h2>{{slide.title}}</h2>
+            <div class="price">₹&nbsp;{{slide.price}}</div>
+            <label>Size</label>
+            <ul>
+              <li>55-14</li>
+              <li>58-14</li>
+              <li>62-14</li>
+            </ul>
+            <label>Color</label>
+            <ul class="colors">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <a (click)="addtocart(this.slide._id)">Add to cart</a>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+      <pagination-controls class="my-pagination"
+      (pageChange)="p = $event"
+      (pageBoundsCorrection)="p = $event"
+       previousLabel="Previous"
+       nextLabel="Next">
+     </pagination-controls>
+
+</div>

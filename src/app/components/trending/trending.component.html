@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="upper">
+    <p>Trending Products</p>
+    <ul class="anchor">
+      <li><a>Trending</a></li>
+      <li><a>Best Selling</a></li>
+      <li><a>On Sale</a></li>
+    </ul>
+  </div>
+  <div class="crouselx">
+    <img src="https://blogapi.s3.us-west-2.amazonaws.com/uploads/733ca894-ac5d-40c5-8d75-0160ec066de3-trending.jpg" alt="" class="srcss" />
+    <swiper
+      #swiperRef
+      [slidesPerView]="4"
+      [centeredSlides]="false"
+      [spaceBetween]="30"
+      [navigation]="true"
+      [virtual]="true"
+      class="mySwiper"
+    >
+      <ng-template swiperSlide *ngFor="let slide of productlist">
+        <div class="product-item">
+          <!--Ribbon-->
+          <div class="ribbon-wrapper">
+            <div class="ribbon">Sale</div>
+          </div>
+          <!--//Ribbon-->
+          <div class="productImage">
+
+            <img [src]=[slide.productImage] alt="" class="img" >
+           </div>
+          <ol>
+            <li>
+              <a class="whishlist" (click)="addtowishlist(this.slide._id)"><i class="fa-solid fa-heart"></i></a>
+            </li>
+            <li>
+              <a class="whishlist" [routerLink]="['/detailsproduct',this.slide._id]"><i class="fa-solid fa-handcuffs"></i></a>
+            </li>
+          </ol>
+          <a class="product-item__name">{{ slide.title }}</a>
+          <div class="product-item__description">
+            <ul>
+              <li><span>Memory card support: MicroSD</span></li>
+            </ul>
+          </div>
+
+          <div class="product-item__price">
+            <a (click)="addtocart(this.slide._id)" class="btn btn--buy"
+              >Add To Cart</a
+            >
+            <div class="price">
+              <span>&#8377;&nbsp;{{ slide.price }} </span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="full-panel">
+  <div class="container">
+    <!--  Profile Circle-1 -->
+    <div class="outer-circle circle circle-1" *ngFor="let item of categorylist">
+      <span class="sq sq-1"></span>
+      <span class="inner-circle circle" (click)="getid(this.item._id)">
+        <img [src]=[item.categoryImage]/>
+      </span>
+      <span class="sq sq-2"></span>
+    </div>
+
+   <!-- End of Profile Circle-6   -->
+
+  </div>
+
+  </div>
+
